@@ -47,6 +47,9 @@ export default function Header() {
                 소개
               </Button>
               <Button color="inherit" sx={{ mr: 8, fontSize: "1.2rem" }}>
+                소개
+              </Button>
+              <Button color="inherit" sx={{ mr: 8, fontSize: "1.2rem" }}>
                 게시판
               </Button>
               <Button color="inherit" sx={{ mr: 8, fontSize: "1.2rem" }}>

@@ -1,5 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import {
+  Link,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller,
+} from "react-scroll";
 import { Pagination, Navigation, Scrollbar, Autoplay } from "swiper/modules";
 
 // import swiper styles
@@ -45,6 +53,14 @@ const cardData = [
     alt: "슬라이드1",
   },
 ];
+
+const clockImages = [
+  { id: 1, src: "../img/clock1.jpg", initialAngle: 0 },
+  { id: 2, src: "../img/clock2.jpg", initialAngle: (Math.PI / 2) * 3 },
+  { id: 3, src: "../img/clock3.jpg", initialAngle: (Math.PI / 2) * 5 },
+  { id: 4, src: "../img/clock4.jpg", initialAngle: (Math.PI / 2) * 7 },
+  { id: 5, src: "../img/clock5.jpg", initialAngle: (Math.PI / 2) * 10 },
+];
 const SlideComponent = ({ imageSrc, altText }) => {
   return (
     <img
@@ -56,6 +72,22 @@ const SlideComponent = ({ imageSrc, altText }) => {
 };
 
 const HomePage = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  // 스크롤 이벤트 감지 및 스크롤 위치 업데이트
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up: 이펙트가 정리될 때 스크롤 이벤트 리스너 제거
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []); // 빈 의존성 배열로 지정하여 컴포넌트가 마운트될 때 한 번만 실행
+
   return (
     <>
       <div>
@@ -103,6 +135,52 @@ const HomePage = () => {
             </CardActionArea>
           </Card>
         ))}
+      </Box>
+      {/* effect */}
+      <Box
+        sx={{
+          position: "relative",
+          display: "flex",
+          justifyContent: "center",
+          mt: 50,
+        }}
+      >
+        <Box sx={{ flexDirection: "column", position: "absolute" }}>
+          <Typography variant="h4" gutterBottom>
+            나만의 요리재료와
+          </Typography>
+          <Typography variant="h4" gutterBottom>
+            나만의 레시피를 세상에
+          </Typography>
+          <Typography variant="h3" gutterBottom>
+            공개해 주세요!
+          </Typography>
+        </Box>
+
+        {/* clock css */}
+        <Box
+          className="clock-container"
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          {clockImages.map((src, index) => (
+            <img
+              key={index}
+              src={src.src}
+              className={`clock-image image-${index + 1}`}
+              style={{
+                width: "200px",
+                height: "250px",
+                position: "absolute",
+                borderRadius: "10px",
+                opacity: scrollY > 900 ? 1 : 0, // 스크롤이 500px 아래로 내려갔을 때 이미지가 나타남
+                transition: "opacity 3s ease", // 투명도 변경에 애니메이션 적용
+              }}
+            />
+          ))}
+        </Box>
       </Box>
     </>
   );
