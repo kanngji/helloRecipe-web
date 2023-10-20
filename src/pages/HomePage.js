@@ -9,7 +9,7 @@ import {
   scroller,
 } from "react-scroll";
 import { Pagination, Navigation, Scrollbar, Autoplay } from "swiper/modules";
-
+import Footer from "../components/Footer/Footer";
 // import swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -278,6 +278,7 @@ const HomePage = () => {
           </Box>
         </Box>
       </Box>
+      <Footer />
     </>
   );
 };

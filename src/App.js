@@ -2,7 +2,10 @@ import "./App.css";
 import { createTheme, ThemeProvider, Typography } from "@mui/material";
 import Header from "./components/Header/Header";
 import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
 import Footer from "./components//Footer/Footer";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const theme = createTheme({
   spacing: 8,
@@ -13,9 +16,13 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Header />
-      <HomePage />
-      <Footer />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/login" element={<LoginPage />}></Route>
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
