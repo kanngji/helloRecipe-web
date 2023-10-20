@@ -12,7 +12,6 @@ const Footer = () => {
   return (
     <Box
       sx={{
-        mt: 100,
         position: "relative",
         width: "100%",
         height: "20vw",
@@ -32,32 +31,32 @@ const Footer = () => {
           color="inherit"
           sx={{ mr: 8, fontSize: "1.2rem", fontWeight: "bold" }}
         >
-          소개
+          회사소개
         </Button>
         <Button
           color="inherit"
           sx={{ mr: 8, fontSize: "1.2rem", fontWeight: "bold" }}
         >
-          요리모음
+          광고문의
         </Button>
 
         <Button
           color="inherit"
           sx={{ mr: 8, fontSize: "1.2rem", fontWeight: "bold" }}
         >
-          로그인
+          개인정보처리방침
         </Button>
         <Button
           color="inherit"
           sx={{ mr: 8, fontSize: "1.2rem", fontWeight: "bold" }}
         >
-          스토어
+          이용약관
         </Button>
         <Button
           color="inherit"
           sx={{ ml: 20, mr: 5, fontSize: "1.2rem", fontWeight: "bold" }}
         >
-          문의하기
+          고객센터
         </Button>
       </Box>
       <Box

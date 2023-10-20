@@ -181,6 +181,102 @@ const HomePage = () => {
             />
           ))}
         </Box>
+
+        {/* video section */}
+      </Box>
+      <Box
+        sx={{
+          mt: 70,
+          width: "100%",
+          height: "75vw",
+          // border: "1px solid #000000",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        {/* vedio box */}
+        <Box
+          sx={{
+            justifyContent: "center",
+            display: "flex",
+            mt: 5,
+          }}
+        >
+          <Box
+            sx={{
+              width: 390,
+              height: 230,
+              borderRadius: "13px",
+              overflow: "hidden",
+              // border: "1px solid #000000",
+              objectFit: "fill",
+            }}
+          >
+            <video muted autoPlay loop>
+              <source src="../video/video2.mp4" type="video/mp4" />
+            </video>
+          </Box>
+          <Box sx={{ flexDirection: "column", ml: 23, pt: 4 }}>
+            <Typography variant="h5" gutterBottom>
+              요리할 음식 고르기
+            </Typography>
+            <Typography variant="h6" gutterBottom>
+              참신한 재료들을 골라
+              <br /> 요리를 시작하세요
+            </Typography>
+          </Box>
+        </Box>
+        <Box sx={{ justifyContent: "center", display: "flex", mt: 8 }}>
+          <Box
+            sx={{
+              width: 390,
+              height: 230,
+              borderRadius: "13px",
+              overflow: "hidden",
+              // border: "1px solid #000000",
+              objectFit: "fill",
+            }}
+          >
+            <video muted autoPlay loop>
+              <source src="../video/video3.mp4" type="video/mp4" />
+            </video>
+          </Box>
+          <Box sx={{ flexDirection: "column", ml: 23, pt: 4 }}>
+            <Typography variant="h5" gutterBottom>
+              재료손질 하기
+            </Typography>
+            <Typography variant="h6" gutterBottom>
+              남들과 다른 재료손질과
+              <br /> 요리비법 사용하기
+            </Typography>
+          </Box>
+        </Box>
+        <Box sx={{ justifyContent: "center", display: "flex", mt: 8 }}>
+          <Box
+            sx={{
+              width: 390,
+              height: 230,
+              borderRadius: "13px",
+              overflow: "hidden",
+              // border: "1px solid #000000",
+              objectFit: "fill",
+            }}
+          >
+            <video muted autoPlay loop>
+              <source src="../video/video4.mp4" type="video/mp4" />
+            </video>
+          </Box>
+          <Box sx={{ flexDirection: "column", ml: 23, pt: 4 }}>
+            <Typography variant="h5" gutterBottom>
+              요리 완성하기
+            </Typography>
+            <Typography variant="h6" gutterBottom>
+              완성한 음식들을
+              <br /> 사람들에게 보여주세요
+            </Typography>
+          </Box>
+        </Box>
       </Box>
     </>
   );
