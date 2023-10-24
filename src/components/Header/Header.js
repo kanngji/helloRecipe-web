@@ -8,6 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { createTheme } from "@mui/material";
 import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
+import { Link } from "react-router-dom";
 
 const theme = createTheme({
   palette: {
@@ -56,9 +57,11 @@ export default function Header() {
               <Button color="inherit" sx={{ mr: 8, fontSize: "1.2rem" }}>
                 스토어
               </Button>
-              <Button color="inherit" sx={{ mr: 8, fontSize: "1.2rem" }}>
-                로그인
-              </Button>
+              <Link to="/login" style={{ textDecoration: "none" }}>
+                <Button color="inherit" sx={{ mr: 8, fontSize: "1.2rem" }}>
+                  로그인
+                </Button>
+              </Link>
             </div>
 
             <Button color="inherit" sx={{ ml: 20, mr: 5, fontSize: "1.2rem" }}>

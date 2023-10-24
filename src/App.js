@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage";
 import Footer from "./components//Footer/Footer";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import RegisterPage from "./pages/Register";
 
 const theme = createTheme({
   spacing: 8,
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
+          <Route path="/register" element={<RegisterPage />}></Route>
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

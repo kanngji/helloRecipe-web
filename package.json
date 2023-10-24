@@ -27,7 +27,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://kanngji.github.io/helloRecipe-web/",
   "eslintConfig": {
     "extends": [
       "react-app",

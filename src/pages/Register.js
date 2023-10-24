@@ -3,8 +3,7 @@ import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import { Link } from "react-router-dom";
-const LoginPage = () => {
+const RegisterPage = () => {
   return (
     <Box
       component="form"
@@ -35,19 +34,27 @@ const LoginPage = () => {
           autoComplete="current-password"
           variant="standard"
         />
+        <TextField
+          required
+          id="standard-password-input"
+          label="Password 확인"
+          type="password"
+          autoComplete="current-password"
+          variant="standard"
+        />
+        <TextField required id="name-input" label="name" variant="standard" />
+        <TextField required id="email-input" label="email" variant="standard" />
       </Box>
       <Box>
         <Button variant="contained" color="primary">
+          회원가입
+        </Button>
+        <Button variant="outlined" color="success">
           로그인
         </Button>
-        <Link to="/register" style={{ textDecoration: "none" }}>
-          <Button variant="outlined" color="success">
-            회원가입
-          </Button>
-        </Link>
       </Box>
     </Box>
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
