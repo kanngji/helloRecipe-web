@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/helloRecipe-web/static/css/main.8b012942.css",
+    "main.js": "/helloRecipe-web/static/js/main.8033525e.js",
+    "static/js/787.88d978f0.chunk.js": "/helloRecipe-web/static/js/787.88d978f0.chunk.js",
+    "index.html": "/helloRecipe-web/index.html",
+    "main.8b012942.css.map": "/helloRecipe-web/static/css/main.8b012942.css.map",
+    "main.8033525e.js.map": "/helloRecipe-web/static/js/main.8033525e.js.map",
+    "787.88d978f0.chunk.js.map": "/helloRecipe-web/static/js/787.88d978f0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8b012942.css",
+    "static/js/main.8033525e.js"
+  ]
+}
