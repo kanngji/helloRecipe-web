@@ -24,6 +24,8 @@ import { CardActionArea } from "@mui/material";
 
 import Box from "@mui/material/Box";
 
+import "./HomePage.css";
+
 const slideImages = [
   { src: "../img/slide1.jpg", alt: "슬라이드1" },
   { src: "../img/slide2.jpg", alt: "슬라이드2" },
@@ -73,11 +75,19 @@ const SlideComponent = ({ imageSrc, altText }) => {
 
 const HomePage = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [changedCss, setChangedCss] = useState(false);
 
   // 스크롤 이벤트 감지 및 스크롤 위치 업데이트
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      // setScrollY(window.scrollY);
+      const currentScrollY = window.scrollY;
+      setScrollY(currentScrollY);
+
+      // scollY가 900을 넘어가면 changedCss를 true로
+      if (currentScrollY > 900 && !changedCss) {
+        setChangedCss(true);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -169,13 +179,17 @@ const HomePage = () => {
             <img
               key={index}
               src={src.src}
-              className={`clock-image image-${index + 1}`}
+              className={
+                scrollY > 900 || changedCss
+                  ? `clock-image image-${index + 1}`
+                  : ""
+              }
               style={{
                 width: "200px",
                 height: "250px",
                 position: "absolute",
                 borderRadius: "10px",
-                opacity: scrollY > 900 ? 1 : 0, // 스크롤이 500px 아래로 내려갔을 때 이미지가 나타남
+                opacity: scrollY < 900 && !changedCss ? 0 : 1, // 스크롤이 500px 아래로 내려갔을 때 이미지가 나타남
                 transition: "opacity 3s ease", // 투명도 변경에 애니메이션 적용
               }}
             />

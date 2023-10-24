@@ -1,0 +1,70 @@
+.clock-image {
+  /* border: 3px solid black; */
+  transition: left 3s ease;
+}
+.clock-image.image-1 {
+  /* position: absolute; */
+  animation: img-ani1 2s linear forwards;
+}
+
+.clock-image.image-2 {
+  /* position: absolute; */
+  animation: img-ani2 2s linear forwards;
+}
+.clock-image.image-3 {
+  /* position: absolute; */
+  animation: img-ani3 2s linear forwards;
+}
+.clock-image.image-4 {
+  /* position: absolute; */
+  animation: img-ani4 2s linear forwards;
+}
+.clock-image.image-5 {
+  /* position: absolute; */
+  animation: img-ani5 2s linear forwards;
+}
+
+@keyframes img-ani1 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(300px, -100px);
+  }
+}
+
+@keyframes img-ani2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(180px, 250px);
+  }
+}
+
+@keyframes img-ani3 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0px, -300px);
+  }
+}
+
+@keyframes img-ani4 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-320px, -100px);
+  }
+}
+
+@keyframes img-ani5 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-200px, 250px);
+  }
+}
