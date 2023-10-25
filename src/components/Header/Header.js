@@ -50,14 +50,22 @@ export default function Header() {
               <Button color="inherit" sx={{ mr: 8, fontSize: "1.2rem" }}>
                 요리모음
               </Button>
-              <Button color="inherit" sx={{ mr: 8, fontSize: "1.2rem" }}>
-                게시판
-              </Button>
+              <Link
+                to="/board"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <Button color="inherit" sx={{ mr: 8, fontSize: "1.2rem" }}>
+                  게시판
+                </Button>
+              </Link>
 
               <Button color="inherit" sx={{ mr: 8, fontSize: "1.2rem" }}>
                 스토어
               </Button>
-              <Link to="/login" style={{ textDecoration: "none" }}>
+              <Link
+                to="/login"
+                style={{ textDecoration: "none", color: "black" }}
+              >
                 <Button color="inherit" sx={{ mr: 8, fontSize: "1.2rem" }}>
                   로그인
                 </Button>
