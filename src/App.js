@@ -7,7 +7,7 @@ import BoardPage from "./pages/BoardPage";
 import Footer from "./components//Footer/Footer";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import RegisterPage from "./pages/Register";
+import RegisterPage from "./pages/RegisterPage";
 
 const theme = createTheme({
   spacing: 8,
