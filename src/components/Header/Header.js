@@ -44,9 +44,11 @@ export default function Header() {
               <MenuIcon />
             </IconButton>
             <div>
-              <Button color="inherit" sx={{ mr: 8, fontSize: "1.2rem" }}>
-                소개
-              </Button>
+              <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+                <Button color="inherit" sx={{ mr: 8, fontSize: "1.2rem" }}>
+                  소개
+                </Button>
+              </Link>
               <Button color="inherit" sx={{ mr: 8, fontSize: "1.2rem" }}>
                 요리모음
               </Button>
@@ -71,10 +73,17 @@ export default function Header() {
                 </Button>
               </Link>
             </div>
-
-            <Button color="inherit" sx={{ ml: 20, mr: 5, fontSize: "1.2rem" }}>
-              문의하기
-            </Button>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdN4pqNBVWZDP-MxFFycpHy4v6EKA4-d5WK3FihnuM18KcoQg/viewform?usp=sf_link"
+              target="_blank"
+            >
+              <Button
+                color="inherit"
+                sx={{ ml: 20, mr: 5, fontSize: "1.2rem" }}
+              >
+                문의하기
+              </Button>
+            </a>
           </Toolbar>
         </AppBar>
       </Box>
