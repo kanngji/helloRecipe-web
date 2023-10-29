@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
+import { Link, useNavigate } from "react-router-dom";
 import "./BoardPage.css";
 const BoardPage = () => {
   const posts = [
@@ -91,9 +92,11 @@ const BoardPage = () => {
             width: "45%",
           }}
         >
-          <Button variant="contained" color="success">
-            글쓰기
-          </Button>
+          <Link to="create" style={{ textDecoration: "none" }}>
+            <Button variant="contained" color="success">
+              글쓰기
+            </Button>
+          </Link>
         </Box>
         <Pagination count={10} />
       </Box>
