@@ -5,7 +5,9 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
+import { Link, useNavigate } from "react-router-dom";
 const BoardCreatePage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
     content: "",
@@ -62,7 +64,12 @@ const BoardCreatePage = () => {
           <Button variant="contained" size="large" color="success">
             작성
           </Button>
-          <Button variant="outlined" size="large" color="error">
+          <Button
+            variant="outlined"
+            size="large"
+            color="error"
+            onClick={() => navigate(-1)}
+          >
             취소
           </Button>
         </Box>

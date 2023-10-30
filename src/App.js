@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import "./App.css";
 import { createTheme, ThemeProvider, Typography } from "@mui/material";
 import Header from "./components/Header/Header";
@@ -17,6 +18,7 @@ const theme = createTheme({
   },
 });
 function App() {
+  const isLogIn = useSelector((state) => state.auth.isLoggedIn);
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>

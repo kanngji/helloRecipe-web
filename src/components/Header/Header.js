@@ -9,6 +9,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { createTheme } from "@mui/material";
 import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const theme = createTheme({
   palette: {
@@ -22,6 +23,7 @@ const theme = createTheme({
 });
 
 export default function Header() {
+  const isLogIn = useSelector((state) => state.auth.isLoggedIn);
   return (
     <MuiThemeProvider theme={theme}>
       <Box
@@ -64,14 +66,25 @@ export default function Header() {
               <Button color="inherit" sx={{ mr: 8, fontSize: "1.2rem" }}>
                 스토어
               </Button>
-              <Link
-                to="/login"
-                style={{ textDecoration: "none", color: "black" }}
-              >
-                <Button color="inherit" sx={{ mr: 8, fontSize: "1.2rem" }}>
-                  로그인
-                </Button>
-              </Link>
+              {isLogIn ? (
+                <Link
+                  to="/login"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <Button color="inherit" sx={{ mr: 8, fontSize: "1.2rem" }}>
+                    로그아웃
+                  </Button>
+                </Link>
+              ) : (
+                <Link
+                  to="/login"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <Button color="inherit" sx={{ mr: 8, fontSize: "1.2rem" }}>
+                    로그인
+                  </Button>
+                </Link>
+              )}
             </div>
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSdN4pqNBVWZDP-MxFFycpHy4v6EKA4-d5WK3FihnuM18KcoQg/viewform?usp=sf_link"
