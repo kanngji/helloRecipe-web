@@ -22,8 +22,8 @@ const LoginPage = () => {
     }));
   };
   const dispatch = useDispatch();
-  const loginHandler = () => {
-    dispatch(authActions.login());
+  const loginHandler = (id, password) => {
+    dispatch(authActions.login({ user_id: id, user_password: password }));
   };
 
   const handleLogin = async () => {
@@ -41,9 +41,10 @@ const LoginPage = () => {
       });
       if (response.status === 200) {
         const responseData = await response.json();
-        console.log(responseData.message);
+
         navigate(-1);
-        loginHandler();
+        console.log(responseData.user_id, responseData.user_password);
+        loginHandler(responseData.user_id, responseData.user_password);
         // 로그인이 성공하면 리다이렉트 또는 다음 단계를 수행
       } else {
         console.error("Invalid credentials");
