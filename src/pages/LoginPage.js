@@ -22,8 +22,14 @@ const LoginPage = () => {
     }));
   };
   const dispatch = useDispatch();
-  const loginHandler = (id, password) => {
-    dispatch(authActions.login({ user_id: id, user_password: password }));
+  const loginHandler = (id, password, token) => {
+    dispatch(
+      authActions.login({
+        user_id: id,
+        user_password: password,
+        user_token: token,
+      })
+    );
   };
 
   const handleLogin = async () => {
@@ -41,11 +47,17 @@ const LoginPage = () => {
       });
       if (response.status === 200) {
         const responseData = await response.json();
-
+        // 로그인이 성공하면 리다이렉트 또는 다음 단계를 수행
         navigate(-1);
         console.log(responseData.user_id, responseData.user_password);
-        loginHandler(responseData.user_id, responseData.user_password);
-        // 로그인이 성공하면 리다이렉트 또는 다음 단계를 수행
+        loginHandler(
+          responseData.user_id,
+          responseData.user_password,
+          responseData.user_token
+        );
+        // JWT 토큰을 로컬스토리지에 저장
+        localStorage.setItem("token", responseData.token);
+        localStorage.setItem("user_id", responseData.user_id);
       } else {
         console.error("Invalid credentials");
       }

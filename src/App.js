@@ -1,4 +1,5 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import "./App.css";
 import { createTheme, ThemeProvider, Typography } from "@mui/material";
 import Header from "./components/Header/Header";
@@ -10,6 +11,7 @@ import Footer from "./components//Footer/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RegisterPage from "./pages/RegisterPage";
 import BoardCreatePage from "./pages/BoardCreatePage";
+import { authActions } from "./store/auth-slice";
 
 const theme = createTheme({
   spacing: 8,
@@ -18,7 +20,22 @@ const theme = createTheme({
   },
 });
 function App() {
-  const isLogIn = useSelector((state) => state.auth.isLoggedIn);
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
+  // 페이지가 로드될때 local storage에서 토큰을 읽어와서 redux 스토어에 저장
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    const user_id = localStorage.getItem("user_id");
+    if (storedToken && user_id) {
+      dispatch(
+        authActions.login({ user_token: storedToken, user_id: user_id })
+      );
+    }
+    if (!isLoggedIn) {
+      dispatch(authActions.logout());
+    }
+  }, [dispatch]);
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
