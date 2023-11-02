@@ -21,6 +21,31 @@ const BoardCreatePage = () => {
       [id]: value,
     }));
   };
+  // back fetch function
+  const handleCreate = async () => {
+    const dataToSend = {
+      title: formData.title,
+      content: formData.content,
+    };
+    try {
+      const response = await fetch("http://localhost:3001/api/board/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dataToSend),
+      });
+      if (response.ok) {
+        console.log("게시글 작성 성공 F");
+        // 게시글 작성 성공 시 리다이렉션 또는 다른 작업 수행
+      } else {
+        console.log("게시글 작성 실패 f");
+        // 게시글 작성 실패 시 에러 처리 또는 사용자에게 알림 표시
+      }
+    } catch (error) {
+      console.log("게시글 작성 오류: ", error);
+    }
+  };
 
   return (
     <>
@@ -61,7 +86,12 @@ const BoardCreatePage = () => {
           </Box>
         </Box>
         <Box sx={{ display: "flex", justifyContent: "space-around", mt: 3 }}>
-          <Button variant="contained" size="large" color="success">
+          <Button
+            variant="contained"
+            size="large"
+            color="success"
+            onClick={handleCreate}
+          >
             작성
           </Button>
           <Button

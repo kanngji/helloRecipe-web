@@ -35,7 +35,7 @@ const RegisterPage = () => {
       alert("비밀번호와 비밀번호 확인이 다릅니다.");
       return;
     } else {
-      fetch("http://localhost:3001/user/register", {
+      fetch("http://localhost:3001/api/user/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
