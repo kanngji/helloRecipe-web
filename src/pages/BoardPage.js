@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
@@ -8,27 +8,22 @@ import Button from "@mui/material/Button";
 import { Link, useNavigate } from "react-router-dom";
 import "./BoardPage.css";
 const BoardPage = () => {
-  const posts = [
-    {
-      id: 1,
-      title: "첫 번째 게시물",
-      content: "게시물 내용입니다.",
-      author: "작성자1",
-      views: 100,
-      likes: 10,
-      date: "2023-10-25",
-    },
-    {
-      id: 2,
-      title: "두 번째 게시물",
-      content: "게시물 내용입니다.",
-      author: "작성자2",
-      views: 150,
-      likes: 15,
-      date: "2023-10-26",
-    },
-    // 다른 게시물들도 추가할 수 있습니다.
-  ];
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // 컴포넌트가 마운트될 때 백엔드에서 데이터를 가져옵니다.
+    fetch("http://localhost:3001/api/board/")
+      .then((response) => response.json())
+      .then((data) => {
+        setPosts(data.posts || []);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("데이터를 불러오는 중 에러 발생:", error);
+        setLoading(false);
+      });
+  }, []); // 빈 의존성 배열은 이 효과가 초기 렝ㄴ더링 후 한번만 실행됨을 보장함
   return (
     <>
       <Box
@@ -49,39 +44,43 @@ const BoardPage = () => {
             width: "70%",
           }}
         >
-          <div>
-            <Typography
-              variant="h6"
-              gutterBottom
-              sx={{ justifyContent: "center", alignItems: "center", pb: 3 }}
-            >
-              총 게시물 : 2건 현재 페이지: 1
-            </Typography>
-            <table>
-              <thead>
-                <tr>
-                  <th>순번</th>
-                  <th>제목</th>
-                  <th>작성자</th>
-                  <th>조회수</th>
-                  <th>추천수</th>
-                  <th>날짜</th>
-                </tr>
-              </thead>
-              <tbody>
-                {posts.map((post) => (
-                  <tr key={post.id}>
-                    <td>{post.id}</td>
-                    <td>{post.title}</td>
-                    <td>{post.author}</td>
-                    <td>{post.views}</td>
-                    <td>{post.likes}</td>
-                    <td>{post.date}</td>
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <div>
+              <Typography
+                variant="h6"
+                gutterBottom
+                sx={{ justifyContent: "center", alignItems: "center", pb: 3 }}
+              >
+                총 게시물 : 2건 현재 페이지: 1
+              </Typography>
+              <table>
+                <thead>
+                  <tr>
+                    <th>순번</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>조회수</th>
+                    <th>추천수</th>
+                    <th>날짜</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {posts.map((post) => (
+                    <tr key={post.id}>
+                      <td>{post.id}</td>
+                      <td>{post.title}</td>
+                      <td>{post.author}</td>
+                      <td>{post.view}</td>
+                      <td>{post.recommend}</td>
+                      <td>{post.created_at}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </Box>
         <Box
           sx={{
