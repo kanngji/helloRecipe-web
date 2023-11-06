@@ -6,6 +6,7 @@ import Header from "./components/Header/Header";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import BoardPage from "./pages/BoardPage";
+import BoardDetail from "./pages/BoardDetail";
 import Footer from "./components//Footer/Footer";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -44,6 +45,7 @@ function App() {
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
           <Route path="/board" element={<BoardPage />}></Route>
+          <Route path="/board/:id" element={<BoardDetail />}></Route>
           <Route path="/board/create" element={<BoardCreatePage />}></Route>
           <Route path="/register" element={<RegisterPage />}></Route>
         </Routes>
