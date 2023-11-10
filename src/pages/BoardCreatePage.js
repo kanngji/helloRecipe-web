@@ -38,6 +38,7 @@ const BoardCreatePage = () => {
       if (response.ok) {
         console.log("게시글 작성 성공 F");
         // 게시글 작성 성공 시 리다이렉션 또는 다른 작업 수행
+        navigate(-1);
       } else {
         console.log("게시글 작성 실패 f");
         // 게시글 작성 실패 시 에러 처리 또는 사용자에게 알림 표시

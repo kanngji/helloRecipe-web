@@ -10,23 +10,30 @@ import "./BoardPage.css";
 const BoardPage = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalposts, setTotalPosts] = useState(0);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     // 컴포넌트가 마운트될 때 백엔드에서 데이터를 가져옵니다.
-    fetch("http://localhost:3001/api/board/")
+    fetch(`http://localhost:3001/api/board/?page=${currentPage}`)
       .then((response) => response.json())
       .then((data) => {
         setPosts(data.posts || []);
+        console.log(data.posts);
+        setTotalPosts(data.length);
         setLoading(false);
       })
       .catch((error) => {
         console.error("데이터를 불러오는 중 에러 발생:", error);
         setLoading(false);
       });
-  }, []); // 빈 의존성 배열은 이 효과가 초기 렝ㄴ더링 후 한번만 실행됨을 보장함
+  }, [currentPage]); // 빈 의존성 배열은 이 효과가 초기 렝ㄴ더링 후 한번만 실행됨을 보장함
 
+  const handlePageChange = (event, page) => {
+    setCurrentPage(page);
+  };
   const handleRowClick = (post) => {
     // 클릭된 행의 정보를상태로 저장합니다
 
@@ -62,7 +69,7 @@ const BoardPage = () => {
                 gutterBottom
                 sx={{ justifyContent: "center", alignItems: "center", pb: 3 }}
               >
-                총 게시물 : 2건 현재 페이지: 1
+                총 게시물 : {totalposts}건
               </Typography>
               <table>
                 <thead>
@@ -106,7 +113,7 @@ const BoardPage = () => {
             </Button>
           </Link>
         </Box>
-        <Pagination count={10} />
+        <Pagination count={10} page={currentPage} onChange={handlePageChange} />
       </Box>
     </>
   );
